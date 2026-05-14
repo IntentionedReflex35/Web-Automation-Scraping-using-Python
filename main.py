@@ -19,4 +19,19 @@ url = "https://en.wikipedia.org/wiki/Fallacy"
 response = requests.get(url, timeout=10, headers=headers)
 
 soup = BeautifulSoup(response.content, "html5lib")
-print(soup.prettify())
+
+table_of_content = soup.find("ul", attrs={"id": "mw-panel-toc-list"})
+
+list_text = table_of_content.find_all("div", attrs={"class": "vector-toc-text"})
+
+for i in list_text:
+    value = i.get_text(strip=True)
+    for char in value:
+        if char.isnumeric():
+            continue
+        elif char == ".":
+            print("", end='\t')
+        else:
+            print(char, end="")
+
+    print()
