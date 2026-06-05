@@ -21,7 +21,7 @@ cards = soup.find_all('div', attrs={'class': 'border-t border-gray-light first:b
 link_list = []         # Store all links here
 extracted_data = []    # Store data here i.e. titles and links
 
-for card in cards[1:]:
+for card in cards:
     link_tag = card.find('a')
     if link_tag:
         # Get the text
@@ -37,7 +37,6 @@ for link in link_list:
     response = requests.get(link, timeout=20, headers=headers)
     soup = BeautifulSoup(response.content, "html5lib")
     in_this_article = soup.find_all('div', attrs={'id': 'in-this-article-3'})
-    print(in_this_article)
 
     for item in in_this_article:
         item_list = item.find_all('li')
@@ -51,6 +50,7 @@ for link in link_list:
 
 df = pd.DataFrame(extracted_data)
 print(item_dict)
+print('====================================================================================================')
 print(df)
 
 """
