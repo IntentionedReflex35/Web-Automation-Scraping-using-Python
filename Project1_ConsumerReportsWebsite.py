@@ -3,6 +3,7 @@
 import requests
 import html5lib
 from bs4 import BeautifulSoup
+import pandas as pd
 
 headers = {"User-Agent": "Mozilla/5.0 "
                          "(Windows NT 10.0; Win64; x64) "
@@ -17,7 +18,8 @@ soup = BeautifulSoup(response.content, "html5lib")
 
 # Accessing the url
 cards = soup.find_all('div', attrs={'class': 'border-t border-gray-light first:border-t-0 group'})
-link_list = []      # Store all links here
+link_list = []         # Store all links here
+extracted_data = []    # Store data here i.e. titles and links
 
 for card in cards[1:]:
     link_tag = card.find('a')
@@ -27,10 +29,31 @@ for card in cards[1:]:
         # Get the full link
         link = base_url + link_tag['href']
         link_list.append(link)
+        extracted_data.append({'Title': text, 'Link': link})
 
+item_dict = {}   
 # in-this-article list
 for link in link_list:
     response = requests.get(link, timeout=20, headers=headers)
     soup = BeautifulSoup(response.content, "html5lib")
     in_this_article = soup.find_all('div', attrs={'id': 'in-this-article-3'})
     print(in_this_article)
+
+    for item in in_this_article:
+        item_list = item.find_all('li')
+        for item in item_list:
+            text = item.get_text(strip=True)
+            link_tag = item.find('a')
+            if link_tag:
+                # Get the full link
+                link = base_url + link_tag['href']
+                item_dict[text] = link
+
+df = pd.DataFrame(extracted_data)
+print(item_dict)
+print(df)
+
+"""
+This website from which data is extracted from is a dynamic one. This is a beginner project, covering the basics of 
+web scraping.
+"""
