@@ -4,6 +4,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+from pathlib import Path
 
 headers = {"User-Agent": "Mozilla/5.0 "
                          "(Windows NT 10.0; Win64; x64) "
@@ -45,7 +46,13 @@ for result in search_results:
 
 # print(extracted_data)
 
-# Save DataFrame to CSV file
+# Save extracted data in DataFrame
 df = pd.DataFrame(extracted_data)
 print(df)
-df.to_csv('accra_craigslist.csv', index=False)
+
+# Output directory path
+project_root = Path(__file__).resolve().parent.parent
+output_path = project_root/'data'/'accra_craigslist.csv'
+
+# Save DataFrame to CSV file
+df.to_csv(output_path, index=False)
