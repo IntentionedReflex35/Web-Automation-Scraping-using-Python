@@ -1,0 +1,13 @@
+# Web Automation & Scraping using Python
+# Requirements File
+# Python 3.11+
+
+requests==2.34.2
+
+html5lib==1.1
+beautifulsoup4==4.15.0
+
+selenium==4.44.0
+webdriver-manager==4.1.2
+
+pandas==3.0.3
