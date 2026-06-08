@@ -29,9 +29,6 @@ Web Automation&Scraping using Python/
 │
 ├── .venv/                        # Virtual environment (not tracked)
 │
-├── data/                         # Output data files (CSV, etc.)
-│   └── accra_craigslist.csv
-│
 ├── Lessons/                      # Guided course lessons
 │   ├── intro.py                  # BeautifulSoup fundamentals
 │   ├── lecture_selenium.py       # Selenium basics & browser control
@@ -42,10 +39,13 @@ Web Automation&Scraping using Python/
 │   ├── Project1_ConsumerReportsWebsite.py
 │   └── Project2_CraigslistWebsite.py
 │
+├── data/                         # Output data files (CSV, etc.)
+│   └── accra_craigslist.csv
+│
 ├── cookies.pkl                   # Saved browser session (generated at runtime)
 ├── .gitignore
-├── requirements.txt
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
 ---
