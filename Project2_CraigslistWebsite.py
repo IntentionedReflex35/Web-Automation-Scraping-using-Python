@@ -21,7 +21,7 @@ soup = BeautifulSoup(response.content, "html5lib")
 
 # Find element
 search_results = soup.find_all('li', class_='cl-static-search-result')
-extracted_data = []      # Empty list data addition
+extracted_data = []      # Empty list for data addition
 
 # Loop through the results and extract the title, price , location and link for each listing
 for result in search_results:
@@ -41,6 +41,7 @@ for result in search_results:
                            "Link": link,
                            "Location": location,
                            "Price": price})
+
 
 # print(extracted_data)
 
