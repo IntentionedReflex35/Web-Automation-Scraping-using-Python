@@ -23,4 +23,4 @@ password_field.send_keys("Password123")
 submit_button.click()
 
 # Dumping the cookies / Saving
-pickle.dump(driver.get_cookies(), open("cookies.pkl", "wb"))
+pickle.dump(driver.get_cookies(), open("../cookies.pkl", "wb"))
