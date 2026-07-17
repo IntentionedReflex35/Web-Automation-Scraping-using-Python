@@ -240,5 +240,3 @@ The above copyright notice and this permission notice shall be included in all c
 
 **Jeshurun Nana Kojo Ansah** — Geomatic Engineering student | Aspiring Data Analyst  
 🔗 [GitHub: IntentionedReflex35](https://github.com/IntentionedReflex35)
-
-> *"Move stealthy, execute in silence."*
